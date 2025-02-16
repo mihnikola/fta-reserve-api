@@ -52,7 +52,7 @@ exports.createUser = async (req, res) => {
       to: email,
       subject: "Please Verify Your Email Address",
       html: `<p>Hello ${name},</p><p>Thank you for registering! 
-      Please click the link below to verify your email address:</p><a href="http://localhost:5173/verify/${verificationToken}">Verify Email</a>     <p>This link will expire in 1 hour.</p>`,
+      Please click the link below to verify your email address:</p><a href=${process.env.FRONTEND_API}/verify/${verificationToken}>Verify Email</a>     <p>This link will expire in 1 hour.</p>`,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
